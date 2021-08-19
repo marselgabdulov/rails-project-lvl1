@@ -7,7 +7,7 @@ module HexletCode
   # Your code goes here...
 
   class Tag
-    attr_accessor :result
+    attr_accessor :tag_string
 
     def initialize(tag = '')
       @tag = tag
@@ -22,11 +22,10 @@ module HexletCode
     end
 
     def build(tag_name, *args)
-      if !args.empty?
-        @result = "<#{tag_name} #{parse_attrs(args)}>"
-      else
-        @result = "<#{tag_name}>"
-      end
+      @tag_string = "<#{tag_name}>#{yield}</#{tag_name}>" if block_given? && args.empty?
+      @tag_string = "<#{tag_name} #{parse_attrs(args)}>#{yield}</#{tag_name}>" if block_given? && !args.empty?
+      @tag_string = "<#{tag_name} #{parse_attrs(args)}>" if !block_given? && !args.empty?
+      @tag_string = "<#{tag_name}>" if !block_given? && args.empty?
     end
   end
 end
