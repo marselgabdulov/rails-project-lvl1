@@ -13,7 +13,13 @@ class HexletCodeTest < Minitest::Test
 
   def test_simple_tag
     @tag.build('br')
-    assert_equal '<br>', @tag.tag_name
+    assert_equal '<br>', @tag.result
   end
 
+  def test_complex_tag
+    @tag.build('input', type: 'submit', value: 'Save')
+    assert_equal '<input type="submit" value="Save">', @tag.result
+  end
+
+  
 end

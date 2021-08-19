@@ -7,18 +7,29 @@ module HexletCode
   # Your code goes here...
 
   class Tag
-    attr_accessor :tag_name
+    attr_accessor :result
 
     def initialize(tag = '')
       @tag = tag
     end
 
+    def parse_attrs(attrs)
+      result = ''
+      attrs.each do |a|
+        a.each { |k, v| result += "#{k}=\"#{v}\" " }
+      end
+      result.rstrip
+    end
+
     def build(tag_name, *args)
-      @tag_name = "<#{tag_name}>"
+      if !args.empty?
+        @result = "<#{tag_name} #{parse_attrs(args)}>"
+      else
+        @result = "<#{tag_name}>"
+      end
     end
   end
 end
 
 tag = HexletCode::Tag.new()
-tag.build('br')
-puts tag.tag_name
+
