@@ -9,10 +9,10 @@ Gem::Specification.new do |spec|
   spec.email         = ["marsel.gabdulov@gmail.com"]
 
   spec.summary       = "Генератор форм – DSL, с помощью которого удобно генерировать формы."
-  spec.description   = "Генератор форм – DSL, с помощью которого удобно генерировать формы. Эта библиотека берет на себя задачи, которые, обычно, требуют написания большого количества шаблонного кода, например, обработку ошибок. В мире Rails для этого используется Simple Form. Наш генератор похож на него концептуально, но устроен значительно проще."
+  spec.description   = "Генератор форм – DSL, с помощью которого удобно генерировать формы."
   spec.homepage      = "https://github.com/marselgabdulov/rails-project-lvl1"
   spec.license       = "MIT"
-  spec.required_ruby_version = Gem::Requirement.new(">= 2.3.0")
+  spec.required_ruby_version = Gem::Requirement.new(">= 3.0.0")
 
   # spec.metadata["allowed_push_host"] = "TODO: Set to 'http://mygemserver.com'"
 
