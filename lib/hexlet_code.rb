@@ -21,11 +21,15 @@ module HexletCode
     end
 
     def build(name, *args)
-      @tag_string = "<#{name}>#{yield}</#{name}>" if block_given? && args.empty?
-      @tag_string = "<#{name} #{parse_attrs(args)}>#{yield}</#{name}>" if block_given? && !args.empty?
-      @tag_string = "<#{name} #{parse_attrs(args)}>" if !block_given? && !args.empty?
-      @tag_string = "<#{name}>" if !block_given? && args.empty?
+      @tag_string = if block_given? && args.empty?
+                      "<#{name}>#{yield}</#{name}>"
+                    elsif block_given? && !args.empty?
+                      "<#{name} #{parse_attrs(args)}>#{yield}</#{name}>"
+                    elsif !block_given? && !args.empty?
+                      "<#{name} #{parse_attrs(args)}>"
+                    else
+                      "<#{name}>"
+                    end
     end
   end
 end
-
