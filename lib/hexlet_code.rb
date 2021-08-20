@@ -27,6 +27,3 @@ module HexletCode
     end
   end
 end
-
-tag = HexletCode::Tag.build("br")
-puts tag
