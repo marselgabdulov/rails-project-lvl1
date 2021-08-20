@@ -7,8 +7,11 @@ class HexletCodeTest < Minitest::Test
     refute_nil ::HexletCode::VERSION
   end
 
+  User = Struct.new(:name, :job, keyword_init: true)
+
   def setup
     @tag = HexletCode::Tag
+    @user = User.new name: "rob"
   end
 
   def test_simple_tag
@@ -25,5 +28,19 @@ class HexletCodeTest < Minitest::Test
 
   def test_complex_paired_tag
     assert_equal '<label for="email">Email</label>', @tag.build("label", for: "email") { "Email" }
+  end
+
+  def test_form_for_empty
+    empty_form = HexletCode.form_for @user do |f|
+    end
+
+    assert_equal '<form action="#" method="post"></form>', empty_form
+  end
+
+  def test_form_for_with_url
+    form = HexletCode.form_for @user, url: "/users" do |f|
+    end
+
+    assert_equal '<form action="/users" method="post"></form>', form
   end
 end
