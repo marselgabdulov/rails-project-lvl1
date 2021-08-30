@@ -13,9 +13,9 @@ module HexletCode
     end
 
     def self.build(tag, *args)
-      # По уму должно быть два массива с парными и одинарными тегами,
-      # но тегов слишком много и некоторые из них могуть быть как
-      # парными, так и одинарными
+      # It should be two lists with single and paired tags,
+      # but there are too many tags and some of them might
+      # be as single as paired
       if block_given?
         "<#{tag}#{parse_attrs(args)}>#{yield}</#{tag}>"
       elsif tag == "form"
