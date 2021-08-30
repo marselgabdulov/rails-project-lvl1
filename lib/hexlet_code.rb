@@ -9,10 +9,10 @@ module HexletCode
   # Your code goes here...
 
   def self.form_for(_obj, url = nil)
-    if url.nil?
-      '<form action="#" method="post"></form>'
+    if url
+      Tag.build("form", action: url[:url], method: "post")
     else
-      '<form action="/users" method="post"></form>'
+      Tag.build("form", action: "#", method: "post")
     end
   end
 end

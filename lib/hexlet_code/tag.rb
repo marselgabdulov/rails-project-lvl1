@@ -12,11 +12,16 @@ module HexletCode
       result.rstrip
     end
 
-    def self.build(name, *args)
+    def self.build(tag, *args)
+      # По уму должно быть два массива с парными и одинарными тегами,
+      # но тегов слишком много и некоторые из них могуть быть как
+      # парными, так и одинарными
       if block_given?
-        "<#{name}#{parse_attrs(args)}>#{yield}</#{name}>"
+        "<#{tag}#{parse_attrs(args)}>#{yield}</#{tag}>"
+      elsif tag == "form"
+        "<#{tag}#{parse_attrs(args)}></#{tag}>"
       else
-        "<#{name}#{parse_attrs(args)}>"
+        "<#{tag}#{parse_attrs(args)}>"
       end
     end
   end
