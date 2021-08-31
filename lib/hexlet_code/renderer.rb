@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require_relative "inputs/input"
-require_relative "inputs/text_area"
-require_relative "inputs/select"
+require_relative 'inputs/input'
+require_relative 'inputs/text_area'
+require_relative 'inputs/select'
 
 # module HexletCode
 module HexletCode
