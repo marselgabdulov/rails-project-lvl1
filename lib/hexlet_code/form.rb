@@ -13,17 +13,21 @@ module HexletCode
       @inputs = []
     end
 
-    def input(input_name, as: :input, **attrs) # rubocop:disable Naming/MethodParameterName
-      value = @entity[input_name]
-      @inputs << { input_type: as, value: value, name: input_name, **attrs }
-    end
-
     def state
       {
         action: @action,
         attributes: @attributes,
         inputs: @inputs
       }
+    end
+
+    def input(input_name, as: :input, **attrs) # rubocop:disable Naming/MethodParameterName
+      value = @entity[input_name]
+      @inputs << { input_type: as, value: value, name: input_name, **attrs }
+    end
+
+    def submit(value = "Save")
+      @inputs << { type: "submit", value: value, name: "commit" }
     end
   end
 end

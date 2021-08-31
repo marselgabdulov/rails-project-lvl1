@@ -11,8 +11,15 @@ module HexletCode
     end
 
     def to_html
-      attrs = { type: "text", **@params }
-      Tag.to_html("input", attrs)
+      attrs = { type: @params[:type] || "text", **@params }
+      if attrs[:type] == "text"
+        [
+          Tag.to_html("label", { for: attrs[:name] }) { attrs[:name].capitalize },
+          Tag.to_html("input", attrs)
+        ].join
+      else
+        Tag.to_html("input", attrs)
+      end
     end
   end
 end

@@ -30,14 +30,15 @@ class HexletCodeTest < Minitest::Test
     assert_equal '<label for="email">Email</label>', @tag.to_html("label", for: "email") { "Email" }
   end
 
-  def test_form_for
+  def test_form_for_finale
     form = HexletCode.form_for @user do |f|
       f.input :name
       f.input :job, as: :text
       f.input :gender, as: :select, collection: %w[m f]
+      f.submit
     end
     # rubocop:disable Layout/LineLength
-    assert_equal '<form action="#" method="post"><input type="text" value="rob" name="name"><textarea cols="20" rows="40" name="job">hexlet</textarea><select name="gender"><option value="m" selected>m</option><option value="f">f</option></select></form>', form
+    assert_equal '<form action="#" method="post"><label for="name">Name</label><input type="text" value="rob" name="name"><textarea cols="20" rows="40" name="job">hexlet</textarea><select name="gender"><option value="m" selected>m</option><option value="f">f</option></select><input type="submit" value="Save" name="commit"></form>' , form
     # rubocop:enable Layout/LineLength
   end
 end

@@ -18,6 +18,7 @@ module HexletCode
                     end
         end
       end
+
       result.rstrip
     end
 
