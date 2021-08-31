@@ -22,7 +22,7 @@ class HexletCodeTest < Minitest::Test
       f.submit
     end
     # rubocop:disable Layout/LineLength
-    assert_equal '<form action="#" method="post"><label for="name">Name</label><input type="text" value="rob" name="name"><textarea cols="20" rows="40" name="job">hexlet</textarea><select name="gender"><option value="m" selected>m</option><option value="f">f</option></select><input type="submit" value="Save" name="commit"></form>' , form
+    assert_equal '<form action="#" method="post"><label for="name">Name</label><input type="text" value="rob" name="name"><textarea cols="20" rows="40" name="job">hexlet</textarea><select name="gender"><option value="m" selected>m</option><option value="f">f</option></select><input type="submit" value="Save" name="commit"></form>', form
     # rubocop:enable Layout/LineLength
   end
 end
