@@ -1,0 +1,29 @@
+# frozen_string_literal: true
+
+# module HexletCode
+module HexletCode
+  # class Form
+  class Form
+    attr_reader :inputs, :action
+
+    def initialize(entity, url, attrs = nil)
+      @entity = entity
+      @action = url.nil? ? "#" : url[:url]
+      @attributes = attrs
+      @inputs = []
+    end
+
+    def input(input_name, as: :input, **attrs) # rubocop:disable Naming/MethodParameterName
+      value = @entity[input_name]
+      @inputs << { input_type: as, value: value, name: input_name, **attrs }
+    end
+
+    def state
+      {
+        action: @action,
+        attributes: @attributes,
+        inputs: @inputs
+      }
+    end
+  end
+end
