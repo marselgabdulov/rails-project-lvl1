@@ -12,7 +12,10 @@ module HexletCode
 
     def to_html
       attrs = { **@params }
-      Tag.to_html("textarea", { cols: "20", rows: "40", name: attrs[:name] }) { attrs[:value] }
+      [
+        Tag.to_html("label", { for: attrs[:name] }) { attrs[:name].capitalize },
+        Tag.to_html("textarea", { cols: "20", rows: "40", name: attrs[:name] }) { attrs[:value] }
+    ].join
     end
   end
 end
