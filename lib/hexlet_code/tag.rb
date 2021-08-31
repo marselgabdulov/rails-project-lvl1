@@ -4,15 +4,15 @@
 module HexletCode
   # module Tag
   module Tag
-    def self.parse_attrs(attrs) # rubocop:disable Metrics/MethodLength
-      result = " "
+    def self.parse_attrs(attrs)
+      result = ' '
       attrs.each do |a|
         a.each do |k, v|
           result += case v
                     when true
                       k.to_s
                     when false
-                      ""
+                      ''
                     else
                       "#{k}=\"#{v}\" "
                     end

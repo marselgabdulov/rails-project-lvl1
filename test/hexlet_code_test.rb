@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "test_helper"
+require 'test_helper'
 
 class HexletCodeTest < Minitest::Test
   def test_that_it_has_a_version_number
@@ -11,7 +11,7 @@ class HexletCodeTest < Minitest::Test
 
   def setup
     @tag = HexletCode::Tag
-    @user = User.new name: "rob", job: "hexlet", gender: "m"
+    @user = User.new name: 'rob', job: 'hexlet', gender: 'm'
   end
 
   def test_form_for

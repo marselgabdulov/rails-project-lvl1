@@ -33,7 +33,7 @@ module HexletCode
     end
 
     def run
-      Tag.to_html("form", action: @form.state[:action], method: "post") { render_inputs }
+      Tag.to_html('form', action: @form.state[:action], method: 'post') { render_inputs }
     end
   end
 end
