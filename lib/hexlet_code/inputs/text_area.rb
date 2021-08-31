@@ -10,11 +10,13 @@ module HexletCode
       @params = params
     end
 
-    def to_html # rubocop:disable Layout/LineLength
+    def to_html
       attrs = { **@params }
       [
         Tag.to_html("label", { for: attrs[:name] }) { attrs[:name].capitalize },
+        # rubocop: disable Layout/LineLength
         Tag.to_html("textarea", { cols: attrs[:cols].to_s || "20", rows: attrs[:rows].to_s || "40", name: attrs[:name] }) { attrs[:value] }
+        # rubocop: enable Layout/LineLength
       ].join
     end
   end
