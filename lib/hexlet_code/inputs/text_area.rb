@@ -10,7 +10,7 @@ module HexletCode
       @params = params
     end
 
-    def to_html
+    def to_html # rubocop:disable Layout/LineLength
       attrs = { **@params }
       [
         Tag.to_html("label", { for: attrs[:name] }) { attrs[:name].capitalize },
