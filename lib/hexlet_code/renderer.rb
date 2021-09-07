@@ -19,7 +19,7 @@ module HexletCode
     end
 
     private
-    
+
     def input_class(type)
       case type
       when :text then 'TextArea'
