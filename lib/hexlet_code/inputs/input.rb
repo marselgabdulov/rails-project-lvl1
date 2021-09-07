@@ -1,15 +1,10 @@
 # frozen_string_literal: true
+require_relative 'base_input'
 
 # module HexletCode
 module HexletCode
   # class Input
-  class Input
-    attr_reader :params
-
-    def initialize(params = {})
-      @params = params
-    end
-
+  class Input < BaseInput
     def to_html
       attrs = { type: @params[:type] || 'text', **@params }
       if attrs[:type] == 'text'

@@ -1,15 +1,11 @@
 # frozen_string_literal: true
 
+require_relative 'base_input'
+
 # module HexletCode
 module HexletCode
   # class Select
-  class Select
-    attr_reader :params
-
-    def initialize(params = {})
-      @params = params
-    end
-
+  class Select < BaseInput
     def parse_collection(collection)
       collection.each_with_object([]) do |option, result|
         is_selected = collection.first == option

@@ -1,15 +1,10 @@
 # frozen_string_literal: true
+require_relative 'base_input'
 
 # module HexletCode
 module HexletCode
   # class TextArea
-  class TextArea
-    attr_reader :params
-
-    def initialize(params = {})
-      @params = params
-    end
-
+  class TextArea < BaseInput
     def to_html
       attrs = { **@params }
       [
