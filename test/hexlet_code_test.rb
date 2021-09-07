@@ -21,8 +21,6 @@ class HexletCodeTest < Minitest::Test
       f.input :gender, as: :select, collection: %w[m f]
       f.submit
     end
-    # rubocop:disable Layout/LineLength
-    assert_equal '<form action="#" method="post"><label for="name">Name</label><input type="text" value="rob" name="name"><label for="job">Job</label><textarea cols="50" rows="50" name="job">hexlet</textarea><select name="gender"><option value="m" selected>m</option><option value="f">f</option></select><input type="submit" value="Save" name="commit"></form>', form
-    # rubocop:enable Layout/LineLength
+    assert_equal FormFixture.full_form, form
   end
 end
