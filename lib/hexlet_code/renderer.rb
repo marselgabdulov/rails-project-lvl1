@@ -14,15 +14,23 @@ module HexletCode
       @form = form
     end
 
-    def input_init(type, params)
+    def run
+      Tag.to_html('form', action: @form.state[:action], method: 'post') { render_inputs }
+    end
+
+    private
+    
+    def input_class(type)
       case type
-      when :text
-        TextArea.new(params)
-      when :select
-        Select.new(params)
-      else
-        Input.new(params)
+      when :text then 'TextArea'
+      when nil then 'Input'
+      else type.to_s.capitalize
       end
+    end
+
+    def input_init(type, params)
+      class_name = input_class(type)
+      Object.const_get("HexletCode::#{class_name}").new(params)
     end
 
     def render_inputs
@@ -30,10 +38,6 @@ module HexletCode
       inputs.each_with_object([]) do |input, result|
         result << input_init(input[:input_type], input.except(:input_type)).to_html
       end.join
-    end
-
-    def run
-      Tag.to_html('form', action: @form.state[:action], method: 'post') { render_inputs }
     end
   end
 end
