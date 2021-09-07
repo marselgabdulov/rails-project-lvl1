@@ -18,7 +18,27 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```ruby
+# create user struct
+User = Struct.new(:name, :job, keyword_init: true)
+user = User.new job: 'hexlet'
+
+# create form for user
+HexletCode.form_for user do |f|
+  f.input :name
+  f.input :job
+  f.submit
+end
+
+# result ->
+# <form action="#" method="post">
+#   <label for="name">Name</label>
+#   <input type="text" name="name">
+#   <label for="job">Job</label>
+#   <input type="text" name="job" value="hexlet">
+#   <input type="submit" value="Save" name="commit">
+# </form>
+```
 
 ## Development
 
