@@ -4,8 +4,6 @@
 module HexletCode
   # module Tag
   module Tag
-    single_tags = [:img, :br, :input]
-    
     def self.parse_attrs(attrs)
       result = ' '
       attrs.each do |a|
