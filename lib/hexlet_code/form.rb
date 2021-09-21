@@ -13,7 +13,7 @@ module HexletCode
       @inputs = []
     end
 
-    def input(input_name, as: :input, **attrs)
+    def input(input_name, as: :input, **attrs) # rubocop:disable Naming/MethodParameterName
       value = @entity[input_name]
       @inputs << { input_type: as, value: value, name: input_name, **attrs }
     end

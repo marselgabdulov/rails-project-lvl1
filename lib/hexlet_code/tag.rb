@@ -4,6 +4,8 @@
 module HexletCode
   # module Tag
   module Tag
+    SINGLE_TAGS = [:img, :br, :input]
+
     def self.parse_attrs(attrs)
       result = ' '
       attrs.each do |a|
@@ -23,13 +25,10 @@ module HexletCode
     end
 
     def self.to_html(tag, *args)
-      # It should be two lists with single and paired tags,
-      # but there are too many tags and some of them might
-      # be as single as paired
-      if block_given?
-        "<#{tag}#{parse_attrs(args)}>#{yield}</#{tag}>"
-      else
+      if SINGLE_TAGS.include?(tag.to_sym)
         "<#{tag}#{parse_attrs(args)}>"
+      else
+        "<#{tag}#{parse_attrs(args)}>#{yield}</#{tag}>"
       end
     end
   end
