@@ -15,7 +15,7 @@ module HexletCode
     end
 
     def run
-      Tag.to_html('form', action: @form.state[:action], method: 'post') { render_inputs }
+      Tag.to_html('form', action: @form.action, method: 'post') { render_inputs }
     end
 
     private
@@ -34,7 +34,7 @@ module HexletCode
     end
 
     def render_inputs
-      inputs = @form.state[:inputs]
+      inputs = @form.inputs
       inputs.each_with_object([]) do |input, result|
         result << input_init(input[:input_type], input.except(:input_type)).to_html
       end.join

@@ -4,21 +4,13 @@
 module HexletCode
   # class Form
   class Form
-    attr_reader :inputs, :action
+    attr_reader :inputs, :action, :attributes
 
     def initialize(entity, url, attrs = nil)
       @entity = entity
       @action = url.nil? ? '#' : url[:url]
       @attributes = attrs
       @inputs = []
-    end
-
-    def state
-      {
-        action: @action,
-        attributes: @attributes,
-        inputs: @inputs
-      }
     end
 
     def input(input_name, as: :input, **attrs) # rubocop:disable Naming/MethodParameterName
