@@ -1,3 +1,6 @@
+## Workflow
+![example workflow](https://github.com/marselgabdulov/rails-project-lvl1/actions/workflows/hexlet-check.yml/badge.svg)
+
 # HexletCode
 Генератор форм – DSL, с помощью которого удобно генерировать формы. 
 ## Installation
