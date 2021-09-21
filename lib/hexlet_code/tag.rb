@@ -4,7 +4,7 @@
 module HexletCode
   # module Tag
   module Tag
-    SINGLE_TAGS = [:img, :br, :input]
+    SINGLE_TAGS = [:img, :br, :input].freeze
 
     def self.parse_attrs(attrs)
       result = ' '
