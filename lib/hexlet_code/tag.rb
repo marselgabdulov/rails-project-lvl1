@@ -14,7 +14,7 @@ module HexletCode
       single_tags = %w[br img input]
       html = "<#{tag} #{parse_attrs(args)}>"
       return html if single_tags.include?(tag)
-      
+
       if block_given?
         "<#{tag} #{parse_attrs(args)}>#{yield}</#{tag}>"
       else
