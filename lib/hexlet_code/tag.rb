@@ -5,21 +5,18 @@ module HexletCode
   # module Tag
   module Tag
     def self.parse_attrs(attrs)
-      result = ' '
-      attrs.each do |a|
-        a.each do |k, v|
-          result += case v
-                    when true
-                      k.to_s
-                    when false
-                      ''
-                    else
-                      "#{k}=\"#{v}\" "
-                    end
-        end
-      end
-
-      result.rstrip
+      attrs.map do |a|
+        a.map do |k, v|
+          case v
+          when true
+            k.to_s
+          when false
+            ''
+          else
+            "#{k}=\"#{v}\""
+          end
+        end.join(' ').rstrip
+      end.join(' ')
     end
 
     def self.to_html(tag, *args)
@@ -27,9 +24,9 @@ module HexletCode
       # but there are too many tags and some of them might
       # be as single as paired
       if block_given?
-        "<#{tag}#{parse_attrs(args)}>#{yield}</#{tag}>"
+        "<#{tag} #{parse_attrs(args)}>#{yield}</#{tag}>"
       else
-        "<#{tag}#{parse_attrs(args)}>"
+        "<#{tag} #{parse_attrs(args)}>"
       end
     end
   end
