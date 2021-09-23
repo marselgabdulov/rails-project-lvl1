@@ -5,28 +5,19 @@ module HexletCode
   # module Tag
   module Tag
     def self.parse_attrs(attrs)
-      attrs.map do |a|
-        a.map do |k, v|
-          case v
-          when true
-            k.to_s
-          when false
-            ''
-          else
-            "#{k}=\"#{v}\""
-          end
-        end.join(' ').rstrip
+      attrs.inject(:merge).map do |key, value|
+        "#{key}=\"#{value}\""
       end.join(' ')
     end
 
     def self.to_html(tag, *args)
-      # It should be two lists with single and paired tags,
-      # but there are too many tags and some of them might
-      # be as single as paired
+      single_tags = %w[br img input]
+      html = "<#{tag} #{parse_attrs(args)}>"
+      return html if single_tags.include?(tag)
       if block_given?
         "<#{tag} #{parse_attrs(args)}>#{yield}</#{tag}>"
       else
-        "<#{tag} #{parse_attrs(args)}>"
+        "<#{tag} #{parse_attrs(args)}></#{tag}>"
       end
     end
   end
