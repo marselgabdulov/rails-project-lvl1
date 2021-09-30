@@ -7,7 +7,7 @@ module HexletCode
     def self.parse_attrs(attrs)
       attrs.inject(:merge).map do |key, value|
         "#{key}=\"#{value}\""
-      end.join(" ")
+      end.join(' ')
     end
 
     def self.to_html(tag, *args)
