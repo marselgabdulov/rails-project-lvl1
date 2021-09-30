@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'test_helper'
+require "test_helper"
 
 class HexletCodeTest < Minitest::Test
   def test_that_it_has_a_version_number
@@ -10,8 +10,8 @@ class HexletCodeTest < Minitest::Test
   User = Struct.new(:name, :job, :gender, keyword_init: true)
 
   def setup
-    @tag = HexletCode::Tag
-    @user = User.new name: 'rob', job: 'hexlet', gender: 'm'
+    @user = User.new name: "rob", job: "hexlet", gender: "m"
+    @form_fixture = File.new("./test/fixtures/form_fixture.html").read.tr("\n","")
   end
 
   def test_form_for
@@ -21,6 +21,6 @@ class HexletCodeTest < Minitest::Test
       f.input :gender, as: :select, collection: %w[m f]
       f.submit
     end
-    assert_equal FormFixture.full_form, form
+    assert_equal @form_fixture, form
   end
 end
