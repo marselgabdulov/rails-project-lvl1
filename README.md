@@ -1,4 +1,4 @@
-## Workflow
+## Test and linter's check:
 ![example workflow](https://github.com/marselgabdulov/rails-project-lvl1/actions/workflows/hexlet-check.yml/badge.svg)
 
 # HexletCode

@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require_relative 'inputs/input'
-require_relative 'inputs/text_area'
-require_relative 'inputs/select'
+require_relative "inputs/input"
+require_relative "inputs/text_area"
+require_relative "inputs/select"
 
 # module HexletCode
 module HexletCode
@@ -15,15 +15,15 @@ module HexletCode
     end
 
     def run
-      Tag.to_html('form', action: @form.action, method: 'post') { render_inputs }
+      Tag.to_html("form", action: @form.action, method: "post") { render_inputs }
     end
 
     private
 
     def input_class(type)
       case type
-      when :text then 'TextArea'
-      when nil then 'Input'
+      when :text then "TextArea"
+      when nil then "Input"
       else type.to_s.capitalize
       end
     end
