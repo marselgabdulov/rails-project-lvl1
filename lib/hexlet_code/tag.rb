@@ -6,19 +6,19 @@ module HexletCode
   module Tag
     def self.parse_attrs(attrs)
       attrs.inject(:merge).map do |key, value|
-        "#{key}=\"#{value}\""
-      end.join(' ')
+        " #{key}=\"#{value}\""
+      end.join
     end
 
-    def self.to_html(tag, *args)
+    def self.to_html(tag, *attrs)
       single_tags = %w[br img input]
-      html = "<#{tag} #{parse_attrs(args)}>"
+      html = "<#{tag}#{parse_attrs(attrs)}>"
       return html if single_tags.include?(tag)
 
       if block_given?
-        "<#{tag} #{parse_attrs(args)}>#{yield}</#{tag}>"
+        "<#{tag}#{parse_attrs(attrs)}>#{yield}</#{tag}>"
       else
-        "<#{tag} #{parse_attrs(args)}></#{tag}>"
+        "<#{tag}#{parse_attrs(attrs)}></#{tag}>"
       end
     end
   end
