@@ -25,7 +25,6 @@ module HexletCode
       inputs = @form.inputs
       inputs.each_with_object([]) do |input, result|
         input_type = input.delete(:input_type)
-        puts input
         result << Tag.to_html('label', { for: input[:name] }) { input[:name].capitalize } if input[:type] != 'submit'
         result << input_init(input_type, input).to_html
       end.join
