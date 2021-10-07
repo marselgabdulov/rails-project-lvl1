@@ -13,10 +13,10 @@ module HexletCode
       @inputs = []
     end
 
-    def input(input_name, **attrs)
-      input_type = attrs[:as] || :string
-      value = @entity[input_name]
-      @inputs << { input_type: input_type, value: value, name: input_name, **attrs }
+    def input(name, **attrs)
+      type = attrs[:as] || :string
+      value = @entity[name]
+      @inputs << { type: type, value: value, name: name, **attrs }
     end
 
     def submit(value = 'Save')
