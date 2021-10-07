@@ -3,8 +3,8 @@
 # module HexletCode
 module HexletCode
   module Inputs
-    # class BaseInput
-    class BaseInput
+    # class Base
+    class Base
       def initialize(params = {})
         @params = params
       end

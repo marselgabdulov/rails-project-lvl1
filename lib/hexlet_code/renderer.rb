@@ -16,17 +16,9 @@ module HexletCode
 
     private
 
-    def input_class(type)
-      case type
-      when :text then 'TextArea'
-      when nil then 'Input'
-      else type.to_s.capitalize
-      end
-    end
-
     def input_init(type, params)
-      class_name = input_class(type)
-      Object.const_get("HexletCode::Inputs::#{class_name}").new(params)
+      type ||= :string
+      Object.const_get("HexletCode::Inputs::#{type.capitalize}Input").new(params)
     end
 
     def render_inputs

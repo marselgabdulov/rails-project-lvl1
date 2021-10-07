@@ -4,7 +4,7 @@
 module HexletCode
   module Inputs
     # class TextArea
-    class TextArea < BaseInput
+    class TextInput < Base
       def to_html
         attrs = { **@params }
         # rubocop: disable Layout/LineLength

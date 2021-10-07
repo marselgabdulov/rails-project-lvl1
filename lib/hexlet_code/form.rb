@@ -14,7 +14,7 @@ module HexletCode
     end
 
     def input(input_name, **attrs)
-      input_type = attrs[:as] || 'input'
+      input_type = attrs[:as] || :string
       value = @entity[input_name]
       @inputs << { input_type: input_type, value: value, name: input_name, **attrs }
     end

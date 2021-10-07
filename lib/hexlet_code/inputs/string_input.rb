@@ -4,7 +4,7 @@
 module HexletCode
   module Inputs
     # class Input
-    class Input < BaseInput
+    class StringInput < Base
       def to_html
         attrs = { type: @params[:type] || 'text', **@params }
         if attrs[:type] == 'text'

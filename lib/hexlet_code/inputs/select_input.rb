@@ -4,7 +4,7 @@
 module HexletCode
   module Inputs
     # class Select
-    class Select < BaseInput
+    class SelectInput < Base
       def parse_collection(collection)
         collection.each_with_object([]) do |option, result|
           is_selected = collection.first == option
