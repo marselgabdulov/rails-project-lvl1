@@ -21,11 +21,14 @@ module HexletCode
       Object.const_get("HexletCode::Inputs::#{type.capitalize}Input").new(params)
     end
 
+    def render_label(name)
+      Tag.to_html('label', { for: name }) { name.capitalize }
+    end
+
     def render_inputs
-      inputs = @form.inputs
-      inputs.each_with_object([]) do |input, result|
+      @form.inputs.each_with_object([]) do |input, result|
         type = input.delete(:type)
-        result << Tag.to_html('label', { for: input[:name] }) { input[:name].capitalize } if type != 'submit'
+        result << render_label(input[:name]) if type != 'submit'
         result << input_init(type, input).to_html
       end.join
     end
