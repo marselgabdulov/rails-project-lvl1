@@ -1,12 +1,13 @@
 # frozen_string_literal: true
 
-require_relative 'hexlet_code/version'
-require_relative 'hexlet_code/form'
-require_relative 'hexlet_code/tag'
-require_relative 'hexlet_code/renderer'
-
 # module HexletCode
 module HexletCode
+  autoload :Inputs, 'hexlet_code/inputs.rb'
+  autoload :Form, 'hexlet_code/form.rb'
+  autoload :Tag, 'hexlet_code/tag.rb'
+  autoload :Renderer, 'hexlet_code/renderer.rb'
+  autoload :VERSION, 'hexlet_code/version.rb'
+
   def self.form_for(entity, url = nil, **inputs)
     form = Form.new(entity, url, **inputs)
     yield form
