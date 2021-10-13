@@ -11,21 +11,21 @@ module HexletCode
     end
 
     def render
-      Tag.to_html('form', action: @form.action, method: 'post') { render_inputs }
+      Tag.render('form', action: @form.action, method: 'post') { render_fields }
     end
 
     private
 
-    def render_label(name)
-      Tag.to_html('label', { for: name }) { name.capitalize }
+    def render_submit
+      Tag.render('input', { type: 'submit', value: @form.submit_value, name: 'commit' })
     end
 
-    def render_inputs
+    def render_fields
       @form.inputs.each_with_object([]) do |input, result|
         type = input.delete(:type)
-        result << render_label(input[:name]) if type != 'submit'
-        result << Object.const_get("HexletCode::Inputs::#{type.capitalize}Input").new(input).to_html
-      end.join
+        result << Tag.render('label', { for: input[:name] }) { input[:name].capitalize }
+        result << Object.const_get("HexletCode::Inputs::#{type.capitalize}Input").new(input).render
+      end.join.concat(render_submit)
     end
   end
 end

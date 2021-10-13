@@ -5,12 +5,14 @@ module HexletCode
   # class Form
   class Form
     attr_reader :inputs, :action, :attributes
+    attr_accessor :submit_value
 
     def initialize(entity, url, attrs = nil)
       @entity = entity
       @action = url.nil? ? '#' : url[:url]
       @attributes = attrs
       @inputs = []
+      @submit_value = nil
     end
 
     def input(name, **attrs)
@@ -20,7 +22,7 @@ module HexletCode
     end
 
     def submit(value = 'Save')
-      @inputs << { type: 'submit', value: value, name: 'commit' }
+      @submit_value = value
     end
   end
 end

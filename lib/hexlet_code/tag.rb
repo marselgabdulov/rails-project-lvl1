@@ -10,7 +10,7 @@ module HexletCode
       end.join
     end
 
-    def self.to_html(tag, *options)
+    def self.render(tag, *options)
       single_tags = %w[br img input]
       html = "<#{tag}#{build_options(options)}>"
       return html if single_tags.include?(tag)

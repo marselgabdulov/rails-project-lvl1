@@ -5,9 +5,9 @@ module HexletCode
   module Inputs
     # class Input
     class StringInput < Base
-      def to_html
+      def render
         attrs = { type: @params[:type] || 'text', **@params }
-        Tag.to_html('input', attrs)
+        Tag.render('input', attrs)
       end
     end
   end
