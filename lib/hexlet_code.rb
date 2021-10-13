@@ -8,9 +8,9 @@ module HexletCode
   autoload :Renderer, 'hexlet_code/renderer.rb'
   autoload :VERSION, 'hexlet_code/version.rb'
 
-  def self.form_for(entity, url = nil, **inputs)
-    form = Form.new(entity, url, **inputs)
+  def self.form_for(entity, url = nil, **options)
+    form = Form.new(entity, url, **options)
     yield form
-    Renderer.new(form).run
+    Renderer.new(form).render
   end
 end
