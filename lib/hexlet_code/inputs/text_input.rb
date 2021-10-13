@@ -7,7 +7,9 @@ module HexletCode
     class TextInput < Base
       def to_html
         attrs = { **@params }
-        Tag.to_html('textarea', { cols: attrs[:cols].to_s || '20', rows: attrs[:rows].to_s || '40', name: attrs[:name] }) { attrs[:value] }
+        cols = attrs[:cols].to_s || '20'
+        rows = attrs[:rows].to_s || '40'
+        Tag.to_html('textarea', { cols: cols, rows: rows, name: attrs[:name] }) { attrs[:value] }
       end
     end
   end
